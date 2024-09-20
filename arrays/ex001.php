@@ -22,7 +22,8 @@
     ));
     //print_r($pessoas); exibindo toda array
    // print_r($pessoas[0]['nome']); exibindo ecpecificamente um item
-   echo json_encode($pessoas)
+     echo json_encode($pessoas); //transforma array em json
+    // echo json_decode transforma jason em array
     ?>
 
 </body>
