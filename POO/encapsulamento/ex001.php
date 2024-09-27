@@ -6,9 +6,9 @@ class Pessoa {
     private $senha  = "123456";
 
     public function verDados(){
-        $this->nome. "<br/>";
-        $this->idade . "<br/>";
-        $this->senha . "<br/>";
+        echo $this->nome. "<br/>";
+        echo $this->idade . "<br/>";
+        echo $this->senha . "<br/>";
     }
 
 }

@@ -8,17 +8,25 @@ class Pessoa
 
     public function verDados()
     {
-        $this->nome . "<br/>";
-        $this->idade . "<br/>";
-        $this->senha . "<br/>";
+        echo $this->nome . "<br/>";
+        echo $this->idade . "<br/>";
+        echo $this->senha . "<br/>";
     }
 }
 
 class Programador extends Pessoa {
+    public function Vendocoisas(){
+        echo $this->nome. "<br/>";
+        echo $this->idade . "<br/>";
+        //echo $this->senha . "<br/>"; Não vou conseguir exibir pois o metodo não é da mesma classe que ele e sim de uma classe herdeira
     
+    }
+
+
 }
 
 $obj = new Programador();
 
-echo $obj->verDados();
+$obj->verDados();
+$obj->Vendocoisas();
 ?>
