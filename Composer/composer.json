@@ -1,0 +1,12 @@
+{
+    "name": "enzosena/composer",
+    "description": "Testando o composer",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Enzosena\\Composer\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {"monolog/monolog":"1.0.*"}
+}
