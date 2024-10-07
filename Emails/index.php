@@ -2,20 +2,10 @@
 
 require_once("vendor/autoload.php");
 
-
-
-/**
- * This example shows settings to use when sending via Google's Gmail servers.
- * This uses traditional id & password authentication - look at the gmail_xoauth.phps
- * example to see how to use XOAUTH2.
- * The IMAP section shows how to save this message to the 'Sent Mail' folder using IMAP commands.
- */
-
 //Import PHPMailer classes into the global namespace
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 
-require '../vendor/autoload.php';
 
 //Create a new PHPMailer instance
 $mail = new PHPMailer();
@@ -38,47 +28,49 @@ $mail->Host = 'smtp.gmail.com';
 //Set the SMTP port number:
 // - 465 for SMTP with implicit TLS, a.k.a. RFC8314 SMTPS or
 // - 587 for SMTP+STARTTLS
-$mail->Port = 465;
+$mail->Port = 587; // Porta para STARTTLS
+
+$$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Criptografia STARTTLS
 
 //Set the encryption mechanism to use:
 // - SMTPS (implicit TLS on port 465) or
 // - STARTTLS (explicit TLS on port 587)
-$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+//$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 
 //Whether to use SMTP authentication
 $mail->SMTPAuth = true;
 
 //Username to use for SMTP authentication - use full email address for gmail
-$mail->Username = 'username@gmail.com';
+$mail->Username = 'softprimeltda@gmail.com';
 
 //Password to use for SMTP authentication
-$mail->Password = 'yourpassword';
+$mail->Password = '<?senha>';
 
 //Set who the message is to be sent from
 //Note that with gmail you can only use your account address (same as `Username`)
 //or predefined aliases that you have configured within your account.
 //Do not use user-submitted addresses in here
-$mail->setFrom('from@example.com', 'First Last');
+$mail->setFrom('softprimeltda@gmail.com', 'Soft Prime');
 
 //Set an alternative reply-to address
 //This is a good place to put user-submitted addresses
-$mail->addReplyTo('replyto@example.com', 'First Last');
+$mail->addReplyTo('softprimeltda@gmail.com', 'Soft Prime');
 
 //Set who the message is to be sent to
-$mail->addAddress('whoto@example.com', 'John Doe');
+$mail->addAddress('enzolevysena@gmail.com', 'Enzo Sena');
 
 //Set the subject line
-$mail->Subject = 'PHPMailer GMail SMTP test';
+$mail->Subject = 'Contratação';
 
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
 $mail->msgHTML(file_get_contents('contents.html'), __DIR__);
 
 //Replace the plain text body with one created manually
-$mail->AltBody = 'This is a plain-text message body';
+$mail->AltBody = 'Boa tarde enzo, você acaba de ser convocado para trabalhar na nossa empresa, uhuu!';
 
 //Attach an image file
-$mail->addAttachment('images/phpmailer_mini.png');
+//$mail->addAttachment('images/phpmailer_mini.png');
 
 //send the message, check for errors
 if (!$mail->send()) {
