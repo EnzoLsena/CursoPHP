@@ -1,4 +1,34 @@
-<?php 
+<?php
+
+// include
+//require "library/Rain/autoload.php";
+require_once("vendor/autoload.php");
+// namespace
+use Rain\Tpl;
+
+// config
+$config = array(
+    "tpl_dir"       => "templates/",
+    "cache_dir"     => "cache/",
+    //"debug"         => true, // set to false to improve the speed
+);
+
+Tpl::configure($config);
+
+
+
+// create the Tpl object
+$tpl = new Tpl;
+
+// assign a variable
+$tpl->assign("name", "SoftPrime");
+$tpl->assign("version", PHP_VERSION);
+
+// assign an array
+//$tpl->assign("week", array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"));
+// draw the template
+$html = $tpl->draw("index", true);
+
 
 require_once("vendor/autoload.php");
 
@@ -30,7 +60,7 @@ $mail->Host = 'smtp.gmail.com';
 // - 587 for SMTP+STARTTLS
 $mail->Port = 587; // Porta para STARTTLS
 
-$$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Criptografia STARTTLS
+$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Criptografia STARTTLS
 
 //Set the encryption mechanism to use:
 // - SMTPS (implicit TLS on port 465) or
@@ -64,7 +94,7 @@ $mail->Subject = 'Contratação';
 
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
-$mail->msgHTML(file_get_contents('contents.html'), __DIR__);
+$mail->msgHTML($html);
 
 //Replace the plain text body with one created manually
 $mail->AltBody = 'Boa tarde enzo, você acaba de ser convocado para trabalhar na nossa empresa, uhuu!';
